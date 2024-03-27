@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Image UploadApp</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="no_record_found">No Record found</string>
+    <string name="already_in_stack">Already in Stack</string>
+    <string name="failed">Failed</string>
+    <string name="uploaded">Uploaded</string>
+</resources>
