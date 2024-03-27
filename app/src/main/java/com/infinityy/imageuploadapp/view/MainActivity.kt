@@ -14,6 +14,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -133,7 +134,9 @@ class MainActivity : AppCompatActivity() {
 
 
         vm.imageUrl.observe(this@MainActivity) {
+
             startImageUpload(it)
+            vm.previousUrl.value=it
         }
     }
 
@@ -263,7 +266,7 @@ class MainActivity : AppCompatActivity() {
      * passing url to service for server upload
      */
     private fun startImageUpload(imagePath: String) {
-        if (isServiceBound) {
+        if (isServiceBound && vm.imageUrl.value!=vm.previousUrl.value) {
             service.uploadImage(imagePath)
         }
     }
