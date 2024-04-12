@@ -1,5 +1,6 @@
 package com.infinityy.imageuploadapp.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,6 +22,7 @@ class HomeViewModel @Inject constructor(
     private val _event: MutableSharedFlow<List<DBDataModel>> = MutableSharedFlow()
     val event = _event.asSharedFlow()
     val imageUrl = MutableLiveData<String>()
+    val previousUrl = MutableLiveData<String>()
     val allData = MutableLiveData<ArrayList<DBDataModel>>()
 
     /**
@@ -36,7 +38,7 @@ class HomeViewModel @Inject constructor(
         useCases.insertEntry(data)
     }
 
-    suspend fun updateEntry(data: DBDataModel) {
+    private suspend fun updateEntry(data: DBDataModel) {
         useCases.updateEntry(data)
     }
 
@@ -88,13 +90,13 @@ class HomeViewModel @Inject constructor(
          * if -> after first image status not start will work as queue.
          */
         dataList.collect { data ->
-
             for (index in data.indices) {
 
                 val dbDataModel = data[index]
 
                 if (dbDataModel.status == ImageUploadStatus.FAILED.toString()) {
-                break
+
+                continue
                 } else if (dbDataModel.status == ImageUploadStatus.UPLOADING.toString()) {
                     val time= dbDataModel.uploadTime?.let {
                         timeDifference(
@@ -111,18 +113,21 @@ class HomeViewModel @Inject constructor(
                              imageUrl = dbDataModel.imageUrl
                          )
                      )
+
                     break  // Skip to the next iteration
                 } else if (dbDataModel.status == ImageUploadStatus.NOT_START.toString() && !dbDataModel.isUpload) {
 
-                    updateEntry(
-                        DBDataModel(
-                            isUpload = false,
-                            status = ImageUploadStatus.UPLOADING.toString(),
-                            uri = "",
-                            imageUrl = dbDataModel.imageUrl
+
+                        updateEntry(
+                            DBDataModel(
+                                isUpload = false,
+                                status = ImageUploadStatus.UPLOADING.toString(),
+                                uri = "",
+                                imageUrl = dbDataModel.imageUrl
+                            )
                         )
-                    )
-                    imageUrl.value = dbDataModel.imageUrl
+                        imageUrl.value = dbDataModel.imageUrl
+
                     break  // Break out of the loop
                 }
             }
@@ -176,7 +181,7 @@ class HomeViewModel @Inject constructor(
         val timeDifferenceInMillis = currentTimeInMillis - startDate
 
         val timeDifferenceInSeconds = timeDifferenceInMillis / 1000 // Convert milliseconds to seconds
-      return timeDifferenceInSeconds > 40
+      return timeDifferenceInSeconds > 5
         }
 
 
