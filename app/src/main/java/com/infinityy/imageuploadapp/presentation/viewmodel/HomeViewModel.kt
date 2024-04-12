@@ -1,9 +1,9 @@
-package com.infinityy.imageuploadapp.presentation
+package com.infinityy.imageuploadapp.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.infinityy.imageuploadapp.domain.model.DBDataModel
+import com.infinityy.imageuploadapp.data.local.entities.DBDataModel
 import com.infinityy.imageuploadapp.domain.model.ImageUploadStatus
 import com.infinityy.imageuploadapp.domain.usecases.ImageUploadUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel

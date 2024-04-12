@@ -1,4 +1,4 @@
-package com.infinityy.imageuploadapp.adapters
+package com.infinityy.imageuploadapp.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.infinityy.imageuploadapp.R
 import com.infinityy.imageuploadapp.databinding.LayoutDetailsListBinding
-import com.infinityy.imageuploadapp.domain.model.DBDataModel
+import com.infinityy.imageuploadapp.data.local.entities.DBDataModel
 import com.infinityy.imageuploadapp.domain.model.ImageUploadStatus
+import com.infinityy.imageuploadapp.presentation.diffutils.DiffUtilCallback
 import javax.inject.Inject
 
 class ImagesListAdapter @Inject constructor() :
@@ -39,8 +40,10 @@ class ImagesListAdapter @Inject constructor() :
             /**
              * Managing status like uploading,failed and completed.
              */
-            mBinding.ivProgress.visibility = if (data.status == ImageUploadStatus.UPLOADING.toString()) View.VISIBLE else View.INVISIBLE
-            mBinding.ivRetry.visibility = if (data.status == ImageUploadStatus.FAILED.toString()) View.VISIBLE else View.INVISIBLE
+            mBinding.ivProgress.visibility =
+                if (data.status == ImageUploadStatus.UPLOADING.toString()) View.VISIBLE else View.INVISIBLE
+            mBinding.ivRetry.visibility =
+                if (data.status == ImageUploadStatus.FAILED.toString()) View.VISIBLE else View.INVISIBLE
             mBinding.ivIsUpload.visibility = if (data.isUpload) View.VISIBLE else View.INVISIBLE
 
 
@@ -70,12 +73,9 @@ class ImagesListAdapter @Inject constructor() :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesListViewHolder {
+
         return ImagesListViewHolder(
-            LayoutDetailsListBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            LayoutDetailsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

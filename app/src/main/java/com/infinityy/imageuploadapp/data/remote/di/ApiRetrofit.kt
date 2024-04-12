@@ -1,6 +1,6 @@
-package com.infinityy.imageuploadapp.di
+package com.infinityy.imageuploadapp.data.remote.di
 
-import com.infinityy.imageuploadapp.data.remote.ApiInterface
+import com.infinityy.imageuploadapp.data.remote.api.ApiInterface
 import com.infinityy.imageuploadapp.utils.AppConstants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiRetrofit {
-    fun provider() : ApiInterface{
+    fun provider() : ApiInterface {
         return Retrofit.Builder()
             .baseUrl(AppConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

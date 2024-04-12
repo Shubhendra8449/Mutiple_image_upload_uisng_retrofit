@@ -13,12 +13,12 @@ import kotlinx.coroutines.flow.flowOn
 class UploadImageApi(
     private val imageUploadRepository: ImageUploadRepository
 ) {
-    suspend operator fun invoke(data : ApiRequestModel): Flow<ApiState<ApiResponseModel>> {
-        return flow {
-            val response = imageUploadRepository.uploadImage(data)
-            emit(ApiState.success(response))
-        }.flowOn(Dispatchers.IO)
-    }
+//    suspend operator fun invoke(data : ApiRequestModel): Flow<ApiState<ApiResponseModel>> {
+//        return flow {
+//            val response = imageUploadRepository.uploadImage(data)
+//            emit(ApiState.success(response))
+//        }.flowOn(Dispatchers.IO)
+//    }
 
 
 

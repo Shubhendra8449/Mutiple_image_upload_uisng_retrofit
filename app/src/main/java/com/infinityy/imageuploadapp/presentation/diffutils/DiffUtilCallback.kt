@@ -1,7 +1,7 @@
-package com.infinityy.imageuploadapp.adapters
+package com.infinityy.imageuploadapp.presentation.diffutils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.infinityy.imageuploadapp.domain.model.DBDataModel
+import com.infinityy.imageuploadapp.data.local.entities.DBDataModel
 
 // it will be automatically called whenever we will update the note
 // DiffUtils is used to track changes made to the RecyclerView Adapter.

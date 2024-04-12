@@ -1,4 +1,4 @@
-package com.infinityy.imageuploadapp.view
+package com.infinityy.imageuploadapp.presentation.ui.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -23,11 +23,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewModelScope
 import com.infinityy.imageuploadapp.R
-import com.infinityy.imageuploadapp.adapters.ImagesListAdapter
+import com.infinityy.imageuploadapp.presentation.adapters.ImagesListAdapter
 import com.infinityy.imageuploadapp.databinding.ActivityMainBinding
-import com.infinityy.imageuploadapp.domain.model.DBDataModel
+import com.infinityy.imageuploadapp.data.local.entities.DBDataModel
 import com.infinityy.imageuploadapp.domain.model.ImageUploadStatus
-import com.infinityy.imageuploadapp.presentation.HomeViewModel
+import com.infinityy.imageuploadapp.presentation.viewmodel.HomeViewModel
 import com.infinityy.imageuploadapp.services.ImageUploadService
 import com.infinityy.imageuploadapp.utils.AppConstants
 import com.infinityy.imageuploadapp.utils.AppConstants.GALLERY_PERMISSION

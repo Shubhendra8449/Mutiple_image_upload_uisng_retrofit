@@ -1,6 +1,6 @@
 package com.infinityy.imageuploadapp.domain.usecases
 
-import com.infinityy.imageuploadapp.domain.model.DBDataModel
+import com.infinityy.imageuploadapp.data.local.entities.DBDataModel
 import com.infinityy.imageuploadapp.domain.repository.ImageUploadRepository
 
 class InsertEntry(

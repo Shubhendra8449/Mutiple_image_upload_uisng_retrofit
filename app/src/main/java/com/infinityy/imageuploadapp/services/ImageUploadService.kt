@@ -9,7 +9,7 @@ import android.os.*
 import androidx.core.app.NotificationCompat
 import com.google.gson.Gson
 import com.infinityy.imageuploadapp.R
-import com.infinityy.imageuploadapp.di.ApiRetrofit
+import com.infinityy.imageuploadapp.data.remote.di.ApiRetrofit
 import com.infinityy.imageuploadapp.domain.model.ApiRequestModel
 import com.infinityy.imageuploadapp.domain.model.ApiResponseModel
 import com.infinityy.imageuploadapp.utils.AppConstants

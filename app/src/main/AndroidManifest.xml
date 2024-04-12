@@ -23,7 +23,7 @@
         android:theme="@style/Theme.ImageUploadApp"
         tools:targetApi="31">
         <activity
-            android:name=".view.MainActivity"
+            android:name=".presentation.ui.activity.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
