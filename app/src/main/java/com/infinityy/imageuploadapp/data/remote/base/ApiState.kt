@@ -17,7 +17,6 @@ data class ApiState<out T>(val status: Status, val data: T?, val errorModel: Err
         fun <T> error(errorModel: ErrorModel?): ApiState<T> {
             return ApiState(Status.ERROR, null, errorModel)
         }
-
         // When the call is loading set the state
         // as Loading and rest as null
         fun <T> loading(): ApiState<T> {
